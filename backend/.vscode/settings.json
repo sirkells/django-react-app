@@ -9,5 +9,8 @@
   "python.venvPath": "${workspaceFolder/backend/venv/bin/python3}",
   "[python]": {
     "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
   }
 }
