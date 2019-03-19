@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Card } from "antd";
+import { Card, Button, Form } from "antd";
 import FormLayout from "../components/Form";
 
 class ArticleDetail extends Component {
@@ -15,6 +15,12 @@ class ArticleDetail extends Component {
       console.log(res.data);
     });
   }
+
+  delete = event => {
+    const articleID = this.props.match.params.articleID;
+    axios.delete(`http://127.0.0.1:8000/api/${articleID}/delete/`);
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div>
@@ -26,6 +32,11 @@ class ArticleDetail extends Component {
           articleID={this.props.match.params.articleID}
           btnType="Update"
         />
+        <Form onSubmit={this.delete}>
+          <Button type="danger" htmlType="submit">
+            Delete
+          </Button>
+        </Form>
       </div>
     );
   }
