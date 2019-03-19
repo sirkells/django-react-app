@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Card } from "antd";
+import FormLayout from "../components/Form";
 
 class ArticleDetail extends Component {
   state = { article: {} };
@@ -16,9 +17,16 @@ class ArticleDetail extends Component {
   }
   render() {
     return (
-      <Card title={this.state.article.title}>
-        <p>{this.state.article.content}</p>
-      </Card>
+      <div>
+        <Card title={this.state.article.title}>
+          <p>{this.state.article.content}</p>
+        </Card>
+        <FormLayout
+          requestType="put"
+          articleID={this.props.match.params.articleID}
+          btnType="Update"
+        />
+      </div>
     );
   }
 }
